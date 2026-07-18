@@ -14,6 +14,24 @@ const page = getResourcePage(slug!);
 if (!page) {
   throw new Error(`Unknown resource page: ${slug}`);
 }
+
+const regions = [...new Set(page.links.map((link) => link.region))].map(
+  (region) => ({
+    title: region,
+    countries: [
+      ...new Set(
+        page.links
+          .filter((link) => link.region === region)
+          .map((link) => link.country),
+      ),
+    ].map((country) => ({
+      title: country,
+      links: page.links.filter(
+        (link) => link.region === region && link.country === country,
+      ),
+    })),
+  }),
+);
 ---
 
 <BaseLayout title={page.title} description={page.intro}>
@@ -28,28 +46,54 @@ if (!page) {
   <section class="section">
     <div class="wrap">
       {page.note && <p class="note">{page.note}</p>}
-      <ul class="resource-list">
+      <nav class="region-nav" aria-label="Resource regions">
+        <span>Jump to:</span>
         {
-          page.links.map((link) => (
-            <li>
-              <article class="resource">
-                <div class="resource-top">
-                  <span class="type">
-                    {link.type}
-                    {link.region && <span class="region"> · {link.region}</span>}
-                  </span>
-                  <h2>
-                    <a href={link.href} target="_blank" rel="noopener noreferrer">
-                      {link.title}
-                    </a>
-                  </h2>
-                </div>
-                <p>{link.description}</p>
-              </article>
-            </li>
+          regions.map((region) => (
+            <a href={`#${region.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
+              {region.title}
+            </a>
           ))
         }
-      </ul>
+      </nav>
+      <div class="regions">
+        {
+          regions.map((region) => (
+            <section
+              class="region-section"
+              id={region.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+            >
+              <h2>{region.title}</h2>
+              {region.countries.map((country) => (
+                <section class="country-section">
+                  <h3>{country.title}</h3>
+                  <ul class="resource-list">
+                    {country.links.map((link) => (
+                      <li>
+                        <article class="resource">
+                          <div class="resource-top">
+                            <span class="type">{link.type}</span>
+                            <h4>
+                              <a
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {link.title}
+                              </a>
+                            </h4>
+                          </div>
+                          <p>{link.description}</p>
+                        </article>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </section>
+          ))
+        }
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -99,6 +143,55 @@ if (!page) {
     font-size: 0.97rem;
   }
 
+  .region-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 1rem;
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
+  }
+
+  .region-nav span {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .region-nav a {
+    color: var(--sea-deep);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .region-nav a:hover {
+    text-decoration: underline;
+  }
+
+  .regions {
+    display: grid;
+    gap: 4rem;
+  }
+
+  .region-section {
+    scroll-margin-top: 6rem;
+  }
+
+  .region-section > h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    padding-bottom: 0.8rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .country-section + .country-section {
+    margin-top: 2.75rem;
+  }
+
+  .country-section h3 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    color: var(--sea-deep);
+    margin-bottom: 1rem;
+  }
+
   .resource-list {
     list-style: none;
     margin: 0;
@@ -126,21 +219,20 @@ if (!page) {
     color: var(--sea-deep);
   }
 
-  .region {
-    color: var(--ink-soft);
-  }
-
-  h2 {
-    font-size: clamp(1.3rem, 3vw, 1.7rem);
+  h4 {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
     margin: 0;
   }
 
-  h2 a {
+  h4 a {
     text-decoration: none;
     color: var(--ink);
   }
 
-  h2 a:hover {
+  h4 a:hover {
     color: var(--sea-deep);
   }
 
