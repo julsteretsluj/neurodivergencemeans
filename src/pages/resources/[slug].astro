@@ -15,6 +15,21 @@ if (!page) {
   throw new Error(`Unknown resource page: ${slug}`);
 }
 
+const typeEmoji: Record<string, string> = {
+  Organization: "🏛️",
+  Guide: "📘",
+  Helpline: "☎️",
+  Reading: "📰",
+  Tool: "🧰",
+};
+
+function regionId(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 const regions = [...new Set(page.links.map((link) => link.region))].map(
   (region) => ({
     title: region,
@@ -37,7 +52,7 @@ const regions = [...new Set(page.links.map((link) => link.region))].map(
 <BaseLayout title={page.title} description={page.intro}>
   <section class="page-hero">
     <div class="wrap">
-      <p class="eyebrow animate-rise"><a href="/resources/">Resources</a></p>
+      <p class="eyebrow animate-rise"><a href="/resources/">📚 Resources</a></p>
       <h1 class="animate-rise animate-rise-delay-1">{page.title}</h1>
       <p class="intro animate-rise animate-rise-delay-2">{page.intro}</p>
     </div>
@@ -47,22 +62,17 @@ const regions = [...new Set(page.links.map((link) => link.region))].map(
     <div class="wrap">
       {page.note && <p class="note">{page.note}</p>}
       <nav class="region-nav" aria-label="Resource regions">
-        <span>Jump to:</span>
+        <span>🧭 Jump to:</span>
         {
           regions.map((region) => (
-            <a href={`#${region.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}>
-              {region.title}
-            </a>
+            <a href={`#${regionId(region.title)}`}>{region.title}</a>
           ))
         }
       </nav>
       <div class="regions">
         {
           regions.map((region) => (
-            <section
-              class="region-section"
-              id={region.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-            >
+            <section class="region-section" id={regionId(region.title)}>
               <h2>{region.title}</h2>
               {region.countries.map((country) => (
                 <section class="country-section">
@@ -72,14 +82,16 @@ const regions = [...new Set(page.links.map((link) => link.region))].map(
                       <li>
                         <article class="resource">
                           <div class="resource-top">
-                            <span class="type">{link.type}</span>
+                            <span class="type">
+                              {typeEmoji[link.type] ?? "📌"} {link.type}
+                            </span>
                             <h4>
                               <a
                                 href={link.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
-                                {link.title}
+                                {link.title} ↗
                               </a>
                             </h4>
                           </div>

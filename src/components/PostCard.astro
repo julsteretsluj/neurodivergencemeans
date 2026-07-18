@@ -41,12 +41,14 @@ const isProfileOnly = post.instagramUrl.replace(/\/$/, "") === site.instagramUrl
     )
   }
   <details class="image-descriptions">
-    <summary>Image descriptions ({post.altText.length} slides)</summary>
+    <summary>
+      📝 Image descriptions ({post.altText.length} slides)
+    </summary>
     <ol>
       {
         post.altText.map((description, index) => (
           <li>
-            <span class="slide-label">Slide {index + 1}</span>
+            <span class="slide-label">🖼️ Slide {index + 1}</span>
             <p>{description}</p>
           </li>
         ))
@@ -54,20 +56,20 @@ const isProfileOnly = post.instagramUrl.replace(/\/$/, "") === site.instagramUrl
     </ol>
   </details>
   <div class="post-meta">
-    <time datetime={post.publishedAt}>{date}</time>
+    <time datetime={post.publishedAt}>📅 {date}</time>
     {
       postCategories.length > 0 && (
         <ul class="post-tags">
           {postCategories.map((category) => (
             <li>
-              <a href={`/categories/${category.slug}/`}>{category.title}</a>
+              <a href={`/categories/${category.slug}/`}>🏷️ {category.title}</a>
             </li>
           ))}
         </ul>
       )
     }
     <a class="post-link" href={post.instagramUrl} target="_blank" rel="noopener noreferrer">
-      View on Instagram
+      📷 View on Instagram
     </a>
   </div>
 </article>

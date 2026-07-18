@@ -14,9 +14,9 @@ import { posts } from "../data/posts";
         <p class="lede animate-rise animate-rise-delay-2">{site.tagline}</p>
         <div class="btn-group animate-rise animate-rise-delay-3">
           <a class="btn btn-primary" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
-            Follow on Instagram
+            📷 Follow on Instagram
           </a>
-          <a class="btn btn-secondary" href="#posts">Browse posts</a>
+          <a class="btn btn-secondary" href="#posts">📖 Browse posts</a>
         </div>
       </div>
       <div class="hero-figure animate-rise animate-rise-delay-2">
@@ -33,7 +33,7 @@ import { posts } from "../data/posts";
   <section class="section" id="posts">
     <div class="wrap">
       <div class="section-head">
-        <h2>Latest from Instagram</h2>
+        <h2>📸 Latest from Instagram</h2>
         <p>A curated feed from {site.handle} — open any post to view it on Instagram.</p>
       </div>
       <InstagramFeed posts={posts} />

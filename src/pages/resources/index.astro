@@ -3,10 +3,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { resourcePages } from "../../data/resources";
 ---
 
-<BaseLayout title="Resources" description="Curated resource collections related to neurodivergence.">
+<BaseLayout title="📚 Resources" description="Curated resource collections related to neurodivergence.">
   <section class="page-hero">
     <div class="wrap">
-      <h1 class="animate-rise">Resources</h1>
+      <h1 class="animate-rise">📚 Resources</h1>
       <p class="animate-rise animate-rise-delay-1">
         Curated collections of trusted organizations, guides, and reading — grouped by topic.
       </p>
@@ -20,7 +20,7 @@ import { resourcePages } from "../../data/resources";
           resourcePages.map((page) => (
             <li>
               <a href={`/resources/${page.slug}/`}>
-                <span class="count">{page.links.length} resources</span>
+                <span class="count">📎 {page.links.length} resources</span>
                 <h2>{page.title}</h2>
                 <p>{page.intro}</p>
               </a>

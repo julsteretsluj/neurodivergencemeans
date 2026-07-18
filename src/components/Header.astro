@@ -3,8 +3,8 @@ import { site } from "../data/site";
 
 const pathname = Astro.url.pathname;
 const links = [
-  { href: "/", label: "Posts" },
-  { href: "/resources/", label: "Resources" },
+  { href: "/", label: "📸 Posts" },
+  { href: "/resources/", label: "📚 Resources" },
 ];
 
 function isActive(href: string) {
@@ -29,7 +29,7 @@ function isActive(href: string) {
       }
     </nav>
     <a class="header-ig" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
-      {site.handle}
+      📷 {site.handle}
     </a>
   </div>
 </header>
