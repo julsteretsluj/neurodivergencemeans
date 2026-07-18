@@ -3,7 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import InstagramFeed from "../components/InstagramFeed.astro";
 import { site } from "../data/site";
 import { posts } from "../data/posts";
-import { categories } from "../data/categories";
 ---
 
 <BaseLayout>
@@ -38,27 +37,6 @@ import { categories } from "../data/categories";
         <p>A curated feed from {site.handle} — open any post to view it on Instagram.</p>
       </div>
       <InstagramFeed posts={posts} />
-    </div>
-  </section>
-
-  <section class="section categories-preview">
-    <div class="wrap">
-      <div class="section-head">
-        <h2>Browse by category</h2>
-        <p>Topic pages group posts so you can find language for specific parts of neurodivergence.</p>
-      </div>
-      <ul class="category-list">
-        {
-          categories.map((category) => (
-            <li>
-              <a href={`/categories/${category.slug}/`} style={`--accent: ${category.accent}`}>
-                <span class="cat-title">{category.title}</span>
-                <span class="cat-summary">{category.summary}</span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
     </div>
   </section>
 </BaseLayout>
@@ -132,54 +110,5 @@ import { categories } from "../data/categories";
     color: var(--ink-soft);
     max-width: 34rem;
     margin-bottom: 1.6rem;
-  }
-
-  .categories-preview {
-    padding-top: 0;
-  }
-
-  .category-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 0.85rem;
-  }
-
-  .category-list a {
-    display: grid;
-    gap: 0.35rem;
-    padding: 1.15rem 0;
-    border-top: 1px solid var(--line);
-    text-decoration: none;
-    color: inherit;
-    transition: padding-left 180ms ease;
-  }
-
-  .category-list li:last-child a {
-    border-bottom: 1px solid var(--line);
-  }
-
-  .category-list a:hover {
-    padding-left: 0.4rem;
-  }
-
-  .cat-title {
-    font-family: var(--font-display);
-    font-size: 1.45rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: var(--accent, var(--ink));
-  }
-
-  .cat-summary {
-    color: var(--ink-soft);
-  }
-
-  @media (min-width: 860px) {
-    .category-list {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 2rem;
-    }
   }
 </style>

@@ -2,11 +2,7 @@
 import { site } from "../data/site";
 
 const pathname = Astro.url.pathname;
-const links = [
-  { href: "/", label: "Posts" },
-  { href: "/categories/", label: "Categories" },
-  { href: "/resources/", label: "Resources" },
-];
+const links = [{ href: "/", label: "Posts" }];
 
 function isActive(href: string) {
   if (href === "/") return pathname === "/";

@@ -55,15 +55,17 @@ const isProfileOnly = post.instagramUrl.replace(/\/$/, "") === site.instagramUrl
   </details>
   <div class="post-meta">
     <time datetime={post.publishedAt}>{date}</time>
-    <ul class="post-tags">
-      {
-        postCategories.map((category) => (
-          <li>
-            <a href={`/categories/${category.slug}/`}>{category.title}</a>
-          </li>
-        ))
-      }
-    </ul>
+    {
+      postCategories.length > 0 && (
+        <ul class="post-tags">
+          {postCategories.map((category) => (
+            <li>
+              <a href={`/categories/${category.slug}/`}>{category.title}</a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
     <a class="post-link" href={post.instagramUrl} target="_blank" rel="noopener noreferrer">
       View on Instagram
     </a>

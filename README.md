@@ -1,13 +1,12 @@
 # Neurodivergence Means
 
-A small Astro site for the **Neurodivergence Means** Instagram account: a homepage feed of posts, topic category pages, and a resources library.
+A small Astro site for the **Neurodivergence Means** Instagram account: a homepage feed of posts.
 
 ## Pages
 
 - `/` — brand hero + Instagram posts
-- `/categories/` — topic index
-- `/categories/[slug]/` — posts filtered by topic
-- `/resources/` — guides, tools, and organizations
+
+Categories and resources can be added later in `src/data/categories.ts` and `src/data/resources.ts`.
 
 ## Getting started
 
@@ -37,5 +36,5 @@ Also update the handle and profile URL in `src/data/site.ts` if needed.
 | --- | --- |
 | `src/data/site.ts` | Brand name, handle, Instagram URL |
 | `src/data/posts.ts` | Feed posts |
-| `src/data/categories.ts` | Topic pages |
-| `src/data/resources.ts` | Resources list |
+| `src/data/categories.ts` | Topic pages (empty for now) |
+| `src/data/resources.ts` | Resources list (empty for now) |
