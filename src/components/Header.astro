@@ -17,7 +17,7 @@ function isActive(href: string) {
 <header class="site-header">
   <div class="wrap header-inner">
     <a class="brand" href="/" aria-label={`${site.name} home`}>
-      <span class="brand-mark" aria-hidden="true"></span>
+      <img class="brand-mark" src="/neurodivergence-means.png" alt="" width="128" height="128" />
       <span class="brand-text">{site.name}</span>
     </a>
     <nav class="nav" aria-label="Primary">
@@ -62,12 +62,10 @@ function isActive(href: string) {
   }
 
   .brand-mark {
-    width: 0.85rem;
-    height: 0.85rem;
-    border-radius: 0.15rem;
-    background: linear-gradient(135deg, var(--sea), var(--sun));
+    width: 2.4rem;
+    height: 2.4rem;
+    object-fit: contain;
     flex-shrink: 0;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--foam) 70%, transparent);
   }
 
   .brand-text {
