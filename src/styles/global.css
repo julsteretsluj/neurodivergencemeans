@@ -166,6 +166,87 @@ p {
   border: 0;
 }
 
+.skip-link {
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 200;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 700;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 3px solid var(--sun-deep);
+  outline-offset: 3px;
+}
+
+#main-content:focus {
+  outline: none;
+}
+
+html[data-text-size="large"] {
+  font-size: 112.5%;
+}
+
+html[data-text-size="larger"] {
+  font-size: 125%;
+}
+
+html[data-high-contrast] {
+  --ink: #000;
+  --ink-soft: #111;
+  --paper: #fff;
+  --mist: #fff;
+  --foam: #fff;
+  --sea: #000;
+  --sea-deep: #000;
+  --sun: #ffd400;
+  --sun-deep: #8a5200;
+  --sky: #000;
+  --clay: #000;
+  --line: #000;
+}
+
+html[data-high-contrast] body {
+  background: #fff;
+}
+
+html[data-high-contrast] body::before {
+  display: none;
+}
+
+html[data-high-contrast] a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+html[data-underline-links] a:not(.btn) {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+}
+
+html[data-reduce-motion] {
+  scroll-behavior: auto;
+}
+
+html[data-reduce-motion] *,
+html[data-reduce-motion] *::before,
+html[data-reduce-motion] *::after {
+  animation: none !important;
+  scroll-behavior: auto !important;
+  transition: none !important;
+}
+
 @keyframes rise {
   from {
     opacity: 0;
