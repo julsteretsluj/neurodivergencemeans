@@ -1,0 +1,159 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { resourcePages, getResourcePage } from "../../data/resources";
+
+export function getStaticPaths() {
+  return resourcePages.map((page) => ({
+    params: { slug: page.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const page = getResourcePage(slug!);
+
+if (!page) {
+  throw new Error(`Unknown resource page: ${slug}`);
+}
+---
+
+<BaseLayout title={page.title} description={page.intro}>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow animate-rise"><a href="/resources/">Resources</a></p>
+      <h1 class="animate-rise animate-rise-delay-1">{page.title}</h1>
+      <p class="intro animate-rise animate-rise-delay-2">{page.intro}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      {page.note && <p class="note">{page.note}</p>}
+      <ul class="resource-list">
+        {
+          page.links.map((link) => (
+            <li>
+              <article class="resource">
+                <div class="resource-top">
+                  <span class="type">
+                    {link.type}
+                    {link.region && <span class="region"> · {link.region}</span>}
+                  </span>
+                  <h2>
+                    <a href={link.href} target="_blank" rel="noopener noreferrer">
+                      {link.title}
+                    </a>
+                  </h2>
+                </div>
+                <p>{link.description}</p>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 5rem 0 2rem;
+    border-bottom: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, color-mix(in oklab, var(--foam) 45%, transparent), transparent);
+  }
+
+  .eyebrow {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .eyebrow a {
+    text-decoration: none;
+    color: var(--sea-deep);
+  }
+
+  .eyebrow a:hover {
+    text-decoration: underline;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+  }
+
+  .intro {
+    max-width: 42rem;
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+  }
+
+  .note {
+    max-width: 44rem;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--sun);
+    background: color-mix(in oklab, var(--sun) 12%, transparent);
+    color: var(--ink);
+    font-size: 0.97rem;
+  }
+
+  .resource-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 1.75rem;
+  }
+
+  .resource {
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .resource-top {
+    display: grid;
+    gap: 0.35rem;
+    margin-bottom: 0.55rem;
+  }
+
+  .type {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sea-deep);
+  }
+
+  .region {
+    color: var(--ink-soft);
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    margin: 0;
+  }
+
+  h2 a {
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  h2 a:hover {
+    color: var(--sea-deep);
+  }
+
+  .resource p {
+    color: var(--ink-soft);
+    max-width: 42rem;
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    .resource-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2.5rem;
+    }
+  }
+</style>
