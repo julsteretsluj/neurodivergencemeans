@@ -1,0 +1,131 @@
+---
+import { site } from "../data/site";
+
+const pathname = Astro.url.pathname;
+const links = [
+  { href: "/", label: "Posts" },
+  { href: "/categories/", label: "Categories" },
+  { href: "/resources/", label: "Resources" },
+];
+
+function isActive(href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+---
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-label={`${site.name} home`}>
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">{site.name}</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((link) => (
+          <a href={link.href} class:list={[{ active: isActive(link.href) }]}>
+            {link.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a class="header-ig" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+      {site.handle}
+    </a>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(12px);
+    background: color-mix(in oklab, var(--paper) 78%, transparent);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 4.25rem;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    text-decoration: none;
+    color: var(--ink);
+    min-width: 0;
+  }
+
+  .brand-mark {
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 0.15rem;
+    background: linear-gradient(135deg, var(--sea), var(--sun));
+    flex-shrink: 0;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--foam) 70%, transparent);
+  }
+
+  .brand-text {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    letter-spacing: -0.03em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1rem;
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .nav a:hover,
+  .nav a.active {
+    color: var(--ink);
+  }
+
+  .nav a.active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.35em;
+  }
+
+  .header-ig {
+    display: none;
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--sea-deep);
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 760px) {
+    .nav {
+      gap: 1.25rem;
+    }
+
+    .nav a {
+      font-size: 0.95rem;
+    }
+
+    .header-ig {
+      display: inline;
+    }
+  }
+</style>

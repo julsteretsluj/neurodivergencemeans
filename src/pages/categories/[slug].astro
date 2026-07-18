@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import InstagramFeed from "../../components/InstagramFeed.astro";
+import { categories, getCategory } from "../../data/categories";
+import { postsByCategory } from "../../data/posts";
+import { resources } from "../../data/resources";
+
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { slug: category.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const category = getCategory(slug!);
+
+if (!category) {
+  throw new Error(`Unknown category: ${slug}`);
+}
+
+const categoryPosts = postsByCategory(category.slug);
+const relatedResources = resources.filter((resource) =>
+  resource.categorySlugs.includes(category.slug),
+);
+---
+
+<BaseLayout title={category.title} description={category.summary}>
+  <section class="page-hero" style={`--accent: ${category.accent}`}>
+    <div class="wrap">
+      <p class="eyebrow animate-rise">Category</p>
+      <h1 class="animate-rise animate-rise-delay-1">{category.title}</h1>
+      <p class="animate-rise animate-rise-delay-2">{category.summary}</p>
+      <p class="count animate-rise animate-rise-delay-3">{categoryPosts.length} Instagram posts</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      {
+        categoryPosts.length > 0 ? (
+          <InstagramFeed posts={categoryPosts} />
+        ) : (
+          <p class="empty">No posts in this category yet.</p>
+        )
+      }
+    </div>
+  </section>
+
+  {
+    relatedResources.length > 0 && (
+      <section class="section related">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>Related resources</h2>
+            <p>Extra reading and tools that pair with this topic.</p>
+          </div>
+          <ul>
+            {relatedResources.map((resource) => (
+              <li>
+                <a href={resource.href} target="_blank" rel="noopener noreferrer">
+                  <span class="type">{resource.type}</span>
+                  <span class="title">{resource.title}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+          <p class="more">
+            <a href="/resources/">See all resources</a>
+          </p>
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>
+
+<style>
+  .page-hero {
+    padding: 5rem 0 2rem;
+    border-bottom: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, color-mix(in oklab, var(--accent) 16%, transparent), transparent);
+  }
+
+  .eyebrow {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 7vw, 4rem);
+  }
+
+  .page-hero p {
+    max-width: 36rem;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+  }
+
+  .count {
+    font-weight: 700;
+    color: var(--ink) !important;
+    font-size: 1rem !important;
+  }
+
+  .empty {
+    color: var(--ink-soft);
+  }
+
+  .related {
+    padding-top: 0;
+  }
+
+  .related ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .related a {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+  }
+
+  .related li:last-child a {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .type {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--sea-deep);
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .more {
+    margin-top: 1.25rem;
+  }
+
+  .more a {
+    font-weight: 700;
+  }
+</style>

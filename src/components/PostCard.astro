@@ -1,0 +1,165 @@
+---
+import type { Post } from "../data/posts";
+import { categories } from "../data/categories";
+import { site } from "../data/site";
+
+interface Props {
+  post: Post;
+  embed?: boolean;
+}
+
+const { post, embed = true } = Astro.props;
+const postCategories = categories.filter((category) =>
+  post.categorySlugs.includes(category.slug),
+);
+const date = new Date(post.publishedAt).toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+const isProfileOnly = post.instagramUrl.replace(/\/$/, "") === site.instagramUrl.replace(/\/$/, "");
+---
+
+<article class:list={["post-card", `tone-${post.tone}`]}>
+  {
+    embed && !isProfileOnly ? (
+      <div class="embed-wrap">
+        <blockquote
+          class="instagram-media"
+          data-instgrm-permalink={post.instagramUrl}
+          data-instgrm-version="14"
+          style="background:#FFF; border:0; margin:0; max-width:100%; width:100%; min-width:0;"
+        >
+          <a href={post.instagramUrl}>{post.caption}</a>
+        </blockquote>
+      </div>
+    ) : (
+      <a class="post-visual" href={post.instagramUrl} target="_blank" rel="noopener noreferrer">
+        <span class="visual-label">{site.handle}</span>
+        <p>{post.caption}</p>
+      </a>
+    )
+  }
+  <div class="post-meta">
+    <time datetime={post.publishedAt}>{date}</time>
+    <ul class="post-tags">
+      {
+        postCategories.map((category) => (
+          <li>
+            <a href={`/categories/${category.slug}/`}>{category.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+    <a class="post-link" href={post.instagramUrl} target="_blank" rel="noopener noreferrer">
+      View on Instagram
+    </a>
+  </div>
+</article>
+
+<style>
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-width: 0;
+  }
+
+  .embed-wrap {
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: color-mix(in oklab, white 70%, var(--foam));
+    border: 1px solid var(--line);
+    min-height: 18rem;
+  }
+
+  .post-visual {
+    display: grid;
+    gap: 1rem;
+    align-content: end;
+    min-height: 18rem;
+    padding: 1.4rem;
+    text-decoration: none;
+    color: var(--ink);
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .post-visual:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-soft);
+    color: var(--ink);
+  }
+
+  .tone-sage .post-visual {
+    background:
+      linear-gradient(160deg, color-mix(in oklab, var(--sea) 28%, white), color-mix(in oklab, var(--foam) 70%, white));
+  }
+
+  .tone-amber .post-visual {
+    background:
+      linear-gradient(160deg, color-mix(in oklab, var(--sun) 34%, white), color-mix(in oklab, #f6e7c8 80%, white));
+  }
+
+  .tone-sky .post-visual {
+    background:
+      linear-gradient(160deg, color-mix(in oklab, var(--sky) 30%, white), color-mix(in oklab, #d7e5f0 80%, white));
+  }
+
+  .tone-clay .post-visual {
+    background:
+      linear-gradient(160deg, color-mix(in oklab, var(--clay) 26%, white), color-mix(in oklab, #f3ddd8 80%, white));
+  }
+
+  .tone-moss .post-visual {
+    background:
+      linear-gradient(160deg, color-mix(in oklab, #2f6f62 28%, white), color-mix(in oklab, #d5e8e1 80%, white));
+  }
+
+  .visual-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: -0.02em;
+  }
+
+  .post-visual p {
+    margin: 0;
+    font-size: 1.15rem;
+    line-height: 1.45;
+    font-weight: 700;
+  }
+
+  .post-meta {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  time {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .post-tags a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--sea-deep);
+  }
+
+  .post-link {
+    font-weight: 700;
+    font-size: 0.92rem;
+    width: fit-content;
+  }
+</style>

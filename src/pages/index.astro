@@ -1,0 +1,186 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import InstagramFeed from "../components/InstagramFeed.astro";
+import { site } from "../data/site";
+import { posts } from "../data/posts";
+import { categories } from "../data/categories";
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div class="hero-plane" aria-hidden="true">
+      <img
+        class="hero-image"
+        src="/hero.jpg"
+        alt=""
+        width="2000"
+        height="1332"
+      />
+      <div class="hero-veil"></div>
+    </div>
+    <div class="wrap hero-content">
+      <p class="handle animate-rise">{site.handle}</p>
+      <h1 class="animate-rise animate-rise-delay-1">{site.name}</h1>
+      <p class="lede animate-rise animate-rise-delay-2">{site.tagline}</p>
+      <div class="btn-group animate-rise animate-rise-delay-3">
+        <a class="btn btn-primary" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+          Follow on Instagram
+        </a>
+        <a class="btn btn-secondary" href="#posts">Browse posts</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="posts">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Latest from Instagram</h2>
+        <p>A curated feed from {site.handle} — open any post to view it on Instagram.</p>
+      </div>
+      <InstagramFeed posts={posts} />
+    </div>
+  </section>
+
+  <section class="section categories-preview">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Browse by category</h2>
+        <p>Topic pages group posts so you can find language for specific parts of neurodivergence.</p>
+      </div>
+      <ul class="category-list">
+        {
+          categories.map((category) => (
+            <li>
+              <a href={`/categories/${category.slug}/`} style={`--accent: ${category.accent}`}>
+                <span class="cat-title">{category.title}</span>
+                <span class="cat-summary">{category.summary}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: min(92vh, 52rem);
+    display: grid;
+    align-items: end;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-plane {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    transform: scale(1.04);
+    animation: drift 12s ease-in-out infinite alternate;
+  }
+
+  .hero-veil {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, transparent 35%, color-mix(in oklab, var(--paper) 55%, transparent) 72%, var(--paper) 100%),
+      linear-gradient(105deg, color-mix(in oklab, var(--paper) 88%, transparent) 0%, color-mix(in oklab, var(--paper) 55%, transparent) 28%, transparent 58%);
+  }
+
+  .hero .btn-secondary {
+    background: color-mix(in oklab, var(--paper) 88%, transparent);
+  }
+
+  .hero .handle {
+    color: var(--sea-deep);
+  }
+
+  .hero .lede {
+    color: var(--ink-soft);
+    max-width: 32rem;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 7rem 0 3.5rem;
+    max-width: 46rem;
+  }
+
+  .handle {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--sea-deep);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 9vw, 5.4rem);
+    margin-bottom: 1rem;
+  }
+
+  .lede {
+    font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 34rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .categories-preview {
+    padding-top: 0;
+  }
+
+  .category-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .category-list a {
+    display: grid;
+    gap: 0.35rem;
+    padding: 1.15rem 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    transition: padding-left 180ms ease;
+  }
+
+  .category-list li:last-child a {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .category-list a:hover {
+    padding-left: 0.4rem;
+  }
+
+  .cat-title {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--accent, var(--ink));
+  }
+
+  .cat-summary {
+    color: var(--ink-soft);
+  }
+
+  @media (min-width: 860px) {
+    .category-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2rem;
+    }
+  }
+</style>
