@@ -48,6 +48,24 @@ export const posts: Post[] = [
     publishedAt: "2026-07-12",
     tone: "moss",
   },
+  {
+    id: "Da7Ni5Qk74L",
+    instagramUrl: "https://www.instagram.com/p/Da7Ni5Qk74L/",
+    caption:
+      "What is ABI/TBI? Acquired Brain Injuries and Traumatic Brain Injuries change how a person’s brain functions, impacting everything from cognition to physical and emotional health.",
+    altText: [
+      "ID: Light pink graphic titled “What is ABI/TBI?” with a bulleted list: Definition, Implications, Criteria, and Resources for diagnosis. In the center is a large hand-drawn rainbow infinity symbol overlaying handwritten text that reads “Neurodivergence MEANS…”. Social media handles @neurodivergencemeans and @jules.ktoast are at the bottom.",
+      "ID: Text-heavy graphic on a light pink background headed “IMPORTANT!”. It details four main points: the creator is a minor and not a medical professional, acknowledges personal privileges, notes that neurodivergence includes acquired conditions like brain injuries (not just ADHD or Autism), and welcomes constructive, direct engagement via DMs.",
+      "ID: Educational graphic on a light pink background titled “Definition”. It provides two formal descriptions: Traumatic Brain Injury, defined as brain injury caused by an external force (citing NINDS), and Acquired Brain Injury, defined as an umbrella term for both traumatic and internal diseases-driven non-traumatic brain damage (citing Goldman et al.).",
+      "ID: Infographic on a light pink background titled “Implications”. It presents a bulleted list citing Goldman et al. that outlines how ABI/TBI can affect individuals, including physical, cognitive, sensory, and behavioral symptoms such as a Glasgow Coma Score of 12+, amnesia, seizures, vision and hearing abnormalities, slowed thinking, and language difficulties.",
+      "ID: Diagnostic graphic on a light pink background titled “Criteria”. The text states that ABI/TBI consists of post-birth brain damage resulting in clinical deterioration of functioning, alongside medical evidence of brain dysfunction caused by trauma, stroke, hypoxia, or tumors. Features a QR code linked to synapse.org.au for more information.",
+      "ID: Informational graphic on a light pink background titled “Diagnostic Resources”. The text notes that diagnostic pathways for multiple countries can be found on neurodivergencemeans.vercel.app. Features a web link and a large centered QR code with the caption “(link in bio)”.",
+      "ID: Closing graphic on a light pink background titled “Comment!”. Features the hand-drawn rainbow infinity loop symbol with the text “Neurodivergence MEANS…” and asks users to comment with post ideas or feedback. Social handles @neurodivergencemeans and @jules.ktoast are visible at the bottom.",
+    ],
+    categorySlugs: [],
+    publishedAt: "2026-07-19",
+    tone: "sky",
+  },
 ];
 
 export function postsByCategory(slug: string): Post[] {
