@@ -29,6 +29,11 @@
       <span>🔗 Underline links</span>
     </label>
 
+    <label class="toggle">
+      <input id="accessibility-dyslexic" type="checkbox" />
+      <span>👓 Dyslexia-friendly font (OpenDyslexic)</span>
+    </label>
+
     <button id="accessibility-reset" type="button">↺ Reset options</button>
     <p>💾 Choices are saved on this device.</p>
   </div>
@@ -40,6 +45,7 @@
     highContrast: boolean;
     reduceMotion: boolean;
     underlineLinks: boolean;
+    dyslexicFont: boolean;
   };
 
   const storageKey = "neurodivergence-means-accessibility";
@@ -48,6 +54,7 @@
     highContrast: false,
     reduceMotion: false,
     underlineLinks: false,
+    dyslexicFont: false,
   };
 
   const textSize = document.querySelector<HTMLSelectElement>(
@@ -61,6 +68,9 @@
   );
   const underlineLinks = document.querySelector<HTMLInputElement>(
     "#accessibility-links",
+  );
+  const dyslexicFont = document.querySelector<HTMLInputElement>(
+    "#accessibility-dyslexic",
   );
   const reset = document.querySelector<HTMLButtonElement>(
     "#accessibility-reset",
@@ -81,11 +91,13 @@
     root.toggleAttribute("data-high-contrast", preferences.highContrast);
     root.toggleAttribute("data-reduce-motion", preferences.reduceMotion);
     root.toggleAttribute("data-underline-links", preferences.underlineLinks);
+    root.toggleAttribute("data-dyslexic-font", preferences.dyslexicFont);
 
     if (textSize) textSize.value = preferences.textSize;
     if (highContrast) highContrast.checked = preferences.highContrast;
     if (reduceMotion) reduceMotion.checked = preferences.reduceMotion;
     if (underlineLinks) underlineLinks.checked = preferences.underlineLinks;
+    if (dyslexicFont) dyslexicFont.checked = preferences.dyslexicFont;
   }
 
   function currentPreferences(): Preferences {
@@ -95,6 +107,7 @@
       highContrast: highContrast?.checked ?? false,
       reduceMotion: reduceMotion?.checked ?? false,
       underlineLinks: underlineLinks?.checked ?? false,
+      dyslexicFont: dyslexicFont?.checked ?? false,
     };
   }
 
@@ -114,6 +127,7 @@
   highContrast?.addEventListener("change", saveAndApply);
   reduceMotion?.addEventListener("change", saveAndApply);
   underlineLinks?.addEventListener("change", saveAndApply);
+  dyslexicFont?.addEventListener("change", saveAndApply);
   reset?.addEventListener("click", () => {
     applyPreferences(defaults);
     try {
