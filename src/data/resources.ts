@@ -370,6 +370,359 @@ export const resourcePages: ResourcePage[] = [
       },
     ],
   },
+  {
+    slug: "adhd-diagnosis",
+    title: "⚡ ADHD Diagnosis Resources",
+    shortTitle: "ADHD Diagnosis",
+    intro:
+      "⚡ Attention-Deficit/Hyperactivity Disorder (ADHD) is a neurodevelopmental condition that can affect attention, impulse control, activity levels, and executive functioning across the lifespan. These resources can help you understand how ADHD is assessed and where to find diagnostic support.",
+    note: "⚠️ If you think you or someone you know may have ADHD, contact a qualified medical or mental-health professional. This page is informational and not a substitute for clinical care.",
+    links: [
+      {
+        title: "CHADD — National Resource Center on ADHD",
+        description:
+          "Hosts diagnostic referral networks and information on DSM-5 evaluation standards. National Helpline: 1-800-233-4050.",
+        href: "https://chadd.org/",
+        type: "Helpline",
+        region: "🌎 North America & The Caribbean",
+        country: "🇺🇸 United States",
+      },
+      {
+        title: "ADDA (Attention Deficit Disorder Association)",
+        description:
+          "Focuses on adult ADHD diagnosis pathways, self-assessment screeners, and finding specialized clinical evaluators.",
+        href: "https://add.org/",
+        type: "Organization",
+        region: "🌎 North America & The Caribbean",
+        country: "🇺🇸 United States",
+      },
+      {
+        title: "CADDRA (Canadian ADHD Resource Alliance)",
+        description:
+          "Develops the official Canadian ADHD Practice Guidelines used by physicians and psychologists to assess and diagnose ADHD across all age groups.",
+        href: "https://caddra.ca/",
+        type: "Guide",
+        region: "🌎 North America & The Caribbean",
+        country: "🇨🇦 Canada",
+      },
+      {
+        title: "CADDAC (Centre for ADHD Awareness, Canada)",
+        description:
+          "Educational guides on navigating provincial healthcare systems for an assessment, plus local advocacy programs.",
+        href: "https://caddac.ca/",
+        type: "Organization",
+        region: "🌎 North America & The Caribbean",
+        country: "🇨🇦 Canada",
+      },
+      {
+        title: "ProNeuro (Fundación Pro-Atención a la Deficiencia de Atención)",
+        description:
+          "Family guidance, clinical diagnostic assessments, and professional referrals across Mexico for ADHD.",
+        href: "https://proneuro.org.mx/",
+        type: "Organization",
+        region: "🌎 North America & The Caribbean",
+        country: "🇲🇽 Mexico",
+      },
+      {
+        title:
+          "CENETEC — Diagnóstico y Tratamiento del TDAH en Niños y Adultos",
+        description:
+          "Mexico’s official clinical practice guideline for diagnosing and treating ADHD in children and adults in primary and secondary care.",
+        href: "https://www.gob.mx/salud/cenetec",
+        type: "Guide",
+        region: "🌎 North America & The Caribbean",
+        country: "🇲🇽 Mexico",
+      },
+      {
+        title: "ABDA (Associação Brasileira do Déficit de Atenção)",
+        description:
+          "National association offering public education, self-screening tests, and directory tools to find qualified psychiatrists and neuropsychologists.",
+        href: "https://tdah.org.br/",
+        type: "Organization",
+        region: "🌎 Central & South America",
+        country: "🇧🇷 Brazil",
+      },
+      {
+        title: "Revista Brasileira de Psiquiatria — Diretrizes Brasileiras para o TDAH",
+        description:
+          "Clinical consensus updates and diagnostic guidelines aligned with DSM-5 criteria.",
+        href: "https://www.scielo.br/j/rbp/",
+        type: "Reading",
+        region: "🌎 Central & South America",
+        country: "🇧🇷 Brazil",
+      },
+      {
+        title: "Fundación INECO",
+        description:
+          "Comprehensive neuropsychological and psychiatric evaluation programs structured for diagnosing child and adult ADHD.",
+        href: "https://www.fundacionineco.org/",
+        type: "Organization",
+        region: "🌎 Central & South America",
+        country: "🇦🇷 Argentina",
+      },
+      {
+        title: "APSA (Asociación de Psiquiatras Argentinos)",
+        description:
+          "Clinical guides and practitioner networks for adult and pediatric neurodevelopmental evaluations.",
+        href: "https://apsa.org.ar/",
+        type: "Organization",
+        region: "🌎 Central & South America",
+        country: "🇦🇷 Argentina",
+      },
+      {
+        title: "ACN (Asociación Colombiana de Neurología)",
+        description:
+          "Guidance documents and professional directories for evaluating neurodevelopmental conditions including ADHD.",
+        href: "https://acnweb.org/",
+        type: "Organization",
+        region: "🌎 Central & South America",
+        country: "🇨🇴 Colombia",
+      },
+      {
+        title: "Revista Colombiana de Psiquiatría",
+        description:
+          "National consensus guidelines detailing diagnostic protocols and screening tools used in public and private clinical settings across Colombia.",
+        href: "https://www.elsevier.es/es-revista-revista-colombiana-psiquiatria-379",
+        type: "Reading",
+        region: "🌎 Central & South America",
+        country: "🇨🇴 Colombia",
+      },
+      {
+        title: "ADHD UK",
+        description:
+          "Guides on NHS diagnostic pathways (including Right to Choose in England) and self-assessment tools.",
+        href: "https://adhduk.co.uk/",
+        type: "Helpline",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇬🇧 United Kingdom",
+      },
+      {
+        title: "NHS Guide on ADHD",
+        description:
+          "Outlines formal assessment procedures, Specialist Mental Health Team referrals, and NICE diagnostic guidelines.",
+        href: "https://www.nhs.uk/conditions/attention-deficit-hyperactivity-disorder-adhd/",
+        type: "Guide",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇬🇧 United Kingdom",
+      },
+      {
+        title: "ADHD Ireland",
+        description:
+          "Information line and clear steps for securing an evaluation through public HSE Adult/Child Mental Health Services or accredited private specialists. Helpline: 01 874 8394.",
+        href: "https://adhdireland.ie/",
+        type: "Helpline",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇮🇪 Ireland",
+      },
+      {
+        title: "HSE National Clinical Programme for Adult ADHD",
+        description:
+          "Details the clinical assessment framework and lists operational public ADHD clinics across Ireland.",
+        href: "https://www.hse.ie/",
+        type: "Guide",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇮🇪 Ireland",
+      },
+      {
+        title: "ADHS Deutschland e.V.",
+        description:
+          "Central self-help network offering localized advice on securing diagnostic appointments with specialized psychiatrists (Fachärzte). Helpline: 030 856059-0.",
+        href: "https://adhs-deutschland.de/",
+        type: "Helpline",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇩🇪 Germany",
+      },
+      {
+        title: "ADHS Infoportal",
+        description:
+          "Evidence-based information on diagnosis protocols for children, adolescents, and adults, supported by the Federal Ministry of Health.",
+        href: "https://adhs.info/",
+        type: "Guide",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇩🇪 Germany",
+      },
+      {
+        title: "HyperSuper TDAH France",
+        description:
+          "National patient association offering diagnostic guidance, hospital unit directories, and advocacy for children and adults with ADHD.",
+        href: "https://www.tdah-france.fr/",
+        type: "Organization",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇫🇷 France",
+      },
+      {
+        title: "HAS — Conduite à tenir devant un TDAH",
+        description:
+          "Official Haute Autorité de Santé clinical recommendations outlining assessment standards for healthcare professionals in France.",
+        href: "https://www.has-sante.fr/",
+        type: "Guide",
+        region: "🌍 Europe & The United Kingdom",
+        country: "🇫🇷 France",
+      },
+      {
+        title: "ADHD Australia",
+        description:
+          "Nationwide advocacy, educational toolkits, and guidance on obtaining GP referrals to psychiatrists or clinical psychologists.",
+        href: "https://www.adhdaustralia.org.au/",
+        type: "Organization",
+        region: "🌏 Oceania",
+        country: "🇦🇺 Australia",
+      },
+      {
+        title: "AADPA — Evidence-based Clinical Practice Guideline for ADHD",
+        description:
+          "Diagnostic criteria and clinical practice guidance approved by the NHMRC from the Australian ADHD Professionals Association.",
+        href: "https://aadpa.com.au/",
+        type: "Guide",
+        region: "🌏 Oceania",
+        country: "🇦🇺 Australia",
+      },
+      {
+        title: "ADHD New Zealand",
+        description:
+          "Guides for navigating Te Whatu Ora and private diagnostic pathways for both adults and children.",
+        href: "https://www.adhd.org.nz/",
+        type: "Organization",
+        region: "🌏 Oceania",
+        country: "🇳🇿 New Zealand",
+      },
+      {
+        title: "Health Navigator NZ — ADHD",
+        description:
+          "Overview of diagnostic criteria, DSM-5 symptom checklists, and advice on preparing for a clinical assessment appointment in New Zealand.",
+        href: "https://www.healthnavigator.org.nz/",
+        type: "Guide",
+        region: "🌏 Oceania",
+        country: "🇳🇿 New Zealand",
+      },
+      {
+        title: "NIMHANS (National Institute of Mental Health and Neurosciences)",
+        description:
+          "Specialized child, adolescent, and adult neurodevelopmental diagnostic services and standardized neuropsychological testing.",
+        href: "https://www.nimhans.ac.in/",
+        type: "Organization",
+        region: "🌏 Asia",
+        country: "🇮🇳 India",
+      },
+      {
+        title: "Indian Journal of Psychiatry — ADHD Clinical Practice Guidelines",
+        description:
+          "Clinical practice guidelines for the assessment and management of ADHD in Indian clinical settings.",
+        href: "https://journals.lww.com/indianjpsychiatry/",
+        type: "Reading",
+        region: "🌏 Asia",
+        country: "🇮🇳 India",
+      },
+      {
+        title: "Japanese Society of Child and Adolescent Psychiatry (JSCAP)",
+        description:
+          "Diagnostic guidelines and physician lookup resources for neurodevelopmental disorders (発達障害).",
+        href: "https://jscap.org/",
+        type: "Organization",
+        region: "🌏 Asia",
+        country: "🇯🇵 Japan",
+      },
+      {
+        title: "DDnet — Information and Support Center for Persons with Developmental Disabilities",
+        description:
+          "MHLW-supported portal offering regional diagnostic consultation centers across Japan.",
+        href: "https://www.rehab.go.jp/english/",
+        type: "Guide",
+        region: "🌏 Asia",
+        country: "🇯🇵 Japan",
+      },
+      {
+        title: "Institute of Mental Health (IMH) Singapore",
+        description:
+          "Specialized clinics providing formal psychiatric evaluations, including youth and adult neurodevelopmental services.",
+        href: "https://www.imh.com.sg/",
+        type: "Organization",
+        region: "🌏 Asia",
+        country: "🇸🇬 Singapore",
+      },
+      {
+        title: "Society for ADHD Care Singapore (ADHD Singapore)",
+        description:
+          "Peer-led support and practical advice on navigating public hospital referrals via Polyclinics.",
+        href: "https://adhd.org.sg/",
+        type: "Organization",
+        region: "🌏 Asia",
+        country: "🇸🇬 Singapore",
+      },
+      {
+        title: "ADHDASA (Attention Deficit Hyperactivity Disorder Association of South Africa)",
+        description:
+          "Public educational resources, screening tools, and practitioner referral lists across South Africa. Contact: +27 11 888 3707.",
+        href: "https://www.adhdasa.co.za/",
+        type: "Helpline",
+        region: "🌍 Africa & The Middle East",
+        country: "🇿🇦 South Africa",
+      },
+      {
+        title: "SADAG (South African Depression and Anxiety Group)",
+        description:
+          "Dedicated neurodevelopmental information helplines guiding callers toward diagnostic assessments. Helpline: 0800 567 567.",
+        href: "https://www.sadag.org/",
+        type: "Helpline",
+        region: "🌍 Africa & The Middle East",
+        country: "🇿🇦 South Africa",
+      },
+      {
+        title: "ESNPN (Egyptian Society of Neurology, Psychiatry and Neurosurgery)",
+        description:
+          "Professional resources and lists of certified psychiatric practitioners qualified in neurodevelopmental evaluations.",
+        href: "https://esnpn.eg.net/",
+        type: "Organization",
+        region: "🌍 Africa & The Middle East",
+        country: "🇪🇬 Egypt",
+      },
+      {
+        title: "Egyptian Journal of Psychiatry",
+        description:
+          "Open-access clinical studies on ADHD diagnostic prevalence, screening tools, and adaptation of DSM criteria for Arabic-speaking populations.",
+        href: "https://egjp.journals.ekb.eg/",
+        type: "Reading",
+        region: "🌍 Africa & The Middle East",
+        country: "🇪🇬 Egypt",
+      },
+      {
+        title: "KPA (Kenya Psychiatric Association)",
+        description:
+          "Connects patients with registered psychiatrists and clinical psychologists trained in evaluating childhood and adult neurodivergence.",
+        href: "https://kpa.or.ke/",
+        type: "Organization",
+        region: "🌍 Africa & The Middle East",
+        country: "🇰🇪 Kenya",
+      },
+      {
+        title: "East African Medical Journal",
+        description:
+          "Clinical evaluations and diagnostic frameworks utilized in urban and regional psychiatric facilities in Kenya.",
+        href: "https://www.ajol.info/index.php/eamj",
+        type: "Reading",
+        region: "🌍 Africa & The Middle East",
+        country: "🇰🇪 Kenya",
+      },
+      {
+        title: "World Federation of ADHD",
+        description:
+          "International umbrella organization uniting national ADHD associations and professional societies, with global network maps of country-specific member organizations.",
+        href: "https://www.adhd-federation.org/",
+        type: "Organization",
+        region: "🌐 Global Finders",
+        country: "🌐 Worldwide",
+      },
+      {
+        title: "IACAPAP",
+        description:
+          "Open-access global textbook modules and clinical assessment guidelines adapted for low- and middle-income healthcare systems worldwide.",
+        href: "https://iacapap.org/",
+        type: "Guide",
+        region: "🌐 Global Finders",
+        country: "🌐 Worldwide",
+      },
+    ],
+  },
 ];
 
 export function getResourcePage(slug: string): ResourcePage | undefined {
